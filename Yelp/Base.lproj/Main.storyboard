@@ -129,7 +129,9 @@
                             <constraint firstItem="OKE-xa-GH8" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="ht2-Vs-iH3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Yelp" id="yqr-ze-QPa"/>
+                    <navigationItem key="navigationItem" title="Yelp" id="yqr-ze-QPa">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="byE-8k-8qu"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="OKE-xa-GH8" id="6bM-tN-bhp"/>
                     </connections>
