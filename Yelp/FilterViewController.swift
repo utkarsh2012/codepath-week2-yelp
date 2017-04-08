@@ -16,13 +16,16 @@ import UIKit
 class FilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate, DealCellDelegate, SortCellDelegate, DistanceCellDelegate {
 
     var categories: [[String : String]]!
+    var displayAllCategories = false
+
     var switchStates = [Int : Bool]()
     var isDealSwitchedOn = false
     
-    var distances: [String:Int]!
-    var distancesKeys: [String]!
-    var selectedDistance = "Auto"
+    var distances: [String]!
+    var selectedDistanceIndex = 0
+    var displayAllDistances = false
     
+    var displayAllSortBy = false
     var sortBy: [String]!
     var selectedSortBy = 1
     
@@ -66,7 +69,6 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         categories = yelpCategories()
         distances = yelpDistances()
         sortBy = yelpSortBy()
-        distancesKeys = Array(self.distances.keys)
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,13 +81,13 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             return 1
         }
         else if section == 1 {
-            return distancesKeys.count
+            return displayAllDistances ? distances.count : 1
         }
         else if section == 2 {
-            return sortBy.count
+            return displayAllSortBy ? sortBy.count : 1
         }
         else if section == 3 {
-            return categories.count
+            return displayAllCategories ? categories.count : 4
         }
         return 1
     }
@@ -98,8 +100,8 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         }
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell", for: indexPath) as! DistanceCell
-            cell.distanceLabel.text = distancesKeys[indexPath.row]
-            cell.distanceValue = distances[distancesKeys[indexPath.row]]
+            cell.distanceLabel.text = distances[indexPath.row]
+            cell.distanceValue = indexPath.row
             cell.delegate = self
             cell.distanceRb.isSelected = false
             return cell
@@ -120,6 +122,53 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             cell.onSwitch.isOn = switchStates[indexPath.row] ?? false
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                displayAllDistances = !displayAllDistances
+                if !displayAllDistances {
+                    selectedDistanceIndex = indexPath.row
+                }
+                tableView.reloadData()
+                return
+            }
+            
+            if displayAllDistances {
+                selectedDistanceIndex = indexPath.row
+            }
+            
+            displayAllDistances = !displayAllDistances
+        } else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                displayAllSortBy = !displayAllSortBy
+                if !displayAllSortBy {
+                    selectedSortBy = indexPath.row
+                }
+                tableView.reloadData()
+                return
+            }
+            
+            if displayAllSortBy {
+                selectedSortBy = indexPath.row
+            }
+        } else if indexPath.section == 3 {
+            if indexPath.row == 0 {
+                displayAllCategories = !displayAllCategories
+                if !displayAllCategories {
+                    switchStates[indexPath.row] = true
+                }
+                tableView.reloadData()
+                return
+            }
+            
+            if displayAllCategories {
+                switchStates[indexPath.row] = true
+            }
+        }
+        
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -157,14 +206,8 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         return [ "Best Match", "Distance", "Rating", "Most Reviewed"]
     }
     
-    func yelpDistances() -> [String: Int] {
-        return [
-            " Auto": 1000,
-            " 0.3 miles": 600,
-            " 0.5 miles": 800,
-            " 1 mile": 1600,
-            " 5 miles": 8050
-        ]
+    func yelpDistances() -> [String] {
+        return ["Auto", "0.3 miles", "0.5 miles", "1 mile", "5 miles"]
     }
     
     func yelpCategories() -> [[String:String]] {
