@@ -110,6 +110,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             cell.sortValue = indexPath.row
             cell.delegate = self
             cell.sortRb.isSelected = false
+            //cell.sortRb.alternateButton = Somehow set the alternates here
             return cell
         }
         else {
