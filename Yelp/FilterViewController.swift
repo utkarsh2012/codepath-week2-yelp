@@ -49,9 +49,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         // Handle Deals
-        if isDealSwitchedOn {
-            filters["deals"] = self.isDealSwitchedOn as AnyObject
-        }
+        filters["deals"] = self.isDealSwitchedOn as AnyObject
 
         // Handle Sort By
         filters["sort"] = selectedSortBy as AnyObject
@@ -101,13 +99,17 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell", for: indexPath) as! DistanceCell
             cell.distanceLabel.text = distancesKeys[indexPath.row]
+            cell.distanceValue = distances[distancesKeys[indexPath.row]]
             cell.delegate = self
+            cell.distanceRb.isSelected = false
             return cell
         }
         else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SortCell", for: indexPath) as! SortCell
             cell.sortLabel.text = sortBy[indexPath.row]
+            cell.sortValue = indexPath.row
             cell.delegate = self
+            cell.sortRb.isSelected = false
             return cell
         }
         else {

@@ -14,17 +14,23 @@ import UIKit
 
 class SortCell: UITableViewCell {
 
+    @IBOutlet weak var sortRb: RadioButton!
     @IBOutlet weak var sortLabel: UILabel!
     weak var delegate: SortCellDelegate?
+    var sortValue: Int!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        sortRb.addTarget(self, action: #selector(sortRadioButtonSelected), for: UIControlEvents.allTouchEvents)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func sortRadioButtonSelected(){
+        delegate?.sortCell!(sortCell: self, didChangeValue: self.sortValue)
     }
 }

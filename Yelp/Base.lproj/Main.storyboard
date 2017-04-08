@@ -202,7 +202,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbO-mm-70o">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cbO-mm-70o">
                                                     <rect key="frame" x="318" y="33" width="51" height="31"/>
                                                 </switch>
                                             </subviews>
@@ -243,6 +243,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="distanceLabel" destination="Mej-Ri-Zmg" id="eoU-sq-ihA"/>
+                                            <outlet property="distanceRb" destination="Z6O-NP-enc" id="ITg-ue-ALb"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortCell" id="85D-fO-29J" customClass="SortCell" customModule="Yelp" customModuleProvider="target">
@@ -271,6 +272,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="sortLabel" destination="kTn-sm-n5e" id="t8Z-Qg-8Sa"/>
+                                            <outlet property="sortRb" destination="dhT-r8-5UI" id="tEc-wp-sbF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
