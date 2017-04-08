@@ -106,7 +106,10 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func filterViewController(filterViewController: FilterViewController, didUpdateFilters filters: [String : AnyObject]) {
         let categories = filters["categories"] as? [String]
-        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil) { (businesses: [Business]?, error: Error?) -> Void in
+        let isDeals = filters["deals"] as? Bool
+        let sort = filters["sort"] as? Int
+
+        Business.searchWithTerm(term: "Restaurants", sort: YelpSortMode(rawValue: sort!), categories: categories, deals: isDeals) { (businesses: [Business]?, error: Error?) -> Void in
             self.filteredBusinesses = businesses
             self.tableView.reloadData()
         }

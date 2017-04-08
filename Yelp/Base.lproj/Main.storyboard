@@ -167,8 +167,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NT-fc-R3i">
-                                                    <rect key="frame" x="8" y="36.5" width="49" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Afgan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NT-fc-R3i">
+                                                    <rect key="frame" x="8" y="36.5" width="53" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -187,6 +187,90 @@
                                         <connections>
                                             <outlet property="onSwitch" destination="eqL-WT-t3D" id="eMC-zt-vP2"/>
                                             <outlet property="switchLabel" destination="3NT-fc-R3i" id="hDF-UG-EM2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DealCell" id="11R-Kb-fpb" customClass="DealCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="125" width="375" height="97"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="11R-Kb-fpb" id="xc7-qH-Sfb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offering a Deal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-VL-dxa">
+                                                    <rect key="frame" x="8" y="36.5" width="134" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cbO-mm-70o">
+                                                    <rect key="frame" x="318" y="33" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="h8P-VL-dxa" firstAttribute="centerY" secondItem="xc7-qH-Sfb" secondAttribute="centerY" id="0EJ-ts-m6R"/>
+                                                <constraint firstItem="h8P-VL-dxa" firstAttribute="leading" secondItem="xc7-qH-Sfb" secondAttribute="leading" constant="8" id="Com-8b-xCw"/>
+                                                <constraint firstItem="cbO-mm-70o" firstAttribute="centerY" secondItem="xc7-qH-Sfb" secondAttribute="centerY" id="JaV-o7-VKN"/>
+                                                <constraint firstAttribute="trailing" secondItem="cbO-mm-70o" secondAttribute="trailing" constant="8" id="fXc-GR-CPD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dealSwitch" destination="cbO-mm-70o" id="I6c-Ce-Zus"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DistanceCell" id="or7-98-4e8" customClass="DistanceCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="222" width="375" height="97"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="or7-98-4e8" id="tQP-kC-x20">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mej-Ri-Zmg">
+                                                    <rect key="frame" x="8" y="36.5" width="42" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6O-NP-enc" customClass="RadioButton" customModule="Yelp" customModuleProvider="target">
+                                                    <rect key="frame" x="337" y="33" width="30" height="30"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Z6O-NP-enc" firstAttribute="centerY" secondItem="tQP-kC-x20" secondAttribute="centerY" id="GLa-TF-Tet"/>
+                                                <constraint firstItem="Mej-Ri-Zmg" firstAttribute="leading" secondItem="tQP-kC-x20" secondAttribute="leading" constant="8" id="NVM-3n-8fr"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z6O-NP-enc" secondAttribute="trailing" constant="8" id="TAk-Mb-oWP"/>
+                                                <constraint firstItem="Mej-Ri-Zmg" firstAttribute="centerY" secondItem="tQP-kC-x20" secondAttribute="centerY" id="kgh-Um-fFe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="distanceLabel" destination="Mej-Ri-Zmg" id="eoU-sq-ihA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortCell" id="85D-fO-29J" customClass="SortCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="319" width="375" height="97"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="85D-fO-29J" id="Qe4-VV-Pjp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTn-sm-n5e">
+                                                    <rect key="frame" x="8" y="36.5" width="102" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhT-r8-5UI" customClass="RadioButton" customModule="Yelp" customModuleProvider="target">
+                                                    <rect key="frame" x="337" y="33" width="30" height="30"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kTn-sm-n5e" firstAttribute="centerY" secondItem="Qe4-VV-Pjp" secondAttribute="centerY" id="jit-ET-zw3"/>
+                                                <constraint firstItem="dhT-r8-5UI" firstAttribute="centerY" secondItem="Qe4-VV-Pjp" secondAttribute="centerY" id="n5Y-Kw-wLa"/>
+                                                <constraint firstItem="kTn-sm-n5e" firstAttribute="leading" secondItem="Qe4-VV-Pjp" secondAttribute="leading" constant="8" id="pOd-8d-d3o"/>
+                                                <constraint firstAttribute="trailing" secondItem="dhT-r8-5UI" secondAttribute="trailing" constant="8" id="zFx-bm-eM7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="sortLabel" destination="kTn-sm-n5e" id="t8Z-Qg-8Sa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
