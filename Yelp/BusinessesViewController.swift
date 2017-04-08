@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, FilterViewControllerDelegate {
     
     var businesses: [Business]!
     var filteredBusinesses: [Business]!
@@ -49,10 +49,8 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
             if let businesses = businesses {
                 for business in businesses {
                     print(business.name!)
-                    print(business.address!)
                 }
             }
-            
             }
         )
         
@@ -98,14 +96,20 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    /*
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let filterViewController = navigationController.topViewController as! FilterViewController
+        
+        filterViewController.delegate = self
+    }
+    
+    func filterViewController(filterViewController: FilterViewController, didUpdateFilters filters: [String : AnyObject]) {
+        let categories = filters["categories"] as? [String]
+        Business.searchWithTerm(term: "Restaurants", sort: nil, categories: categories, deals: nil) { (businesses: [Business]?, error: Error?) -> Void in
+            self.filteredBusinesses = businesses
+            self.tableView.reloadData()
+        }
+    }
     
 }
