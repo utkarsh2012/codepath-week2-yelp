@@ -23,9 +23,11 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     var distances: [String]!
     var selectedDistanceIndex = 0
+    var distanceRadiobox = [false, false, false, false, false]
     var displayAllDistances = false
     
     var displayAllSortBy = false
+    var sortByRadiobox = [false, false, false, false]
     var sortBy: [String]!
     var selectedSortBy = 1
     
@@ -66,6 +68,10 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.76, green:0.06, blue:0.07, alpha:1.00)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+
         categories = yelpCategories()
         distances = yelpDistances()
         sortBy = yelpSortBy()
@@ -103,7 +109,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             cell.distanceLabel.text = distances[indexPath.row]
             cell.distanceValue = indexPath.row
             cell.delegate = self
-            cell.distanceRb.isSelected = false
+            cell.distanceRb.isSelected = distanceRadiobox[indexPath.row]
             return cell
         }
         else if indexPath.section == 2 {
@@ -111,8 +117,7 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
             cell.sortLabel.text = sortBy[indexPath.row]
             cell.sortValue = indexPath.row
             cell.delegate = self
-            cell.sortRb.isSelected = false
-            //cell.sortRb.alternateButton = Somehow set the alternates here
+            cell.sortRb.isSelected = sortByRadiobox[indexPath.row]
             return cell
         }
         else {
@@ -187,10 +192,23 @@ class FilterViewController: UIViewController, UITableViewDataSource, UITableView
     
     func sortCell(sortCell: SortCell, didChangeValue value: Int) {
         selectedSortBy = value
+        sortByRadiobox[value] = !sortByRadiobox[value]
+        for (index, _) in sortByRadiobox.enumerated() {
+            if index != value {
+                sortByRadiobox[index] = false
+            }
+        }
+        tableView.reloadData()
     }
     
     func distanceCell(distanceCell: DistanceCell, didChangeValue value: Int) {
-        
+        distanceRadiobox[value] = !distanceRadiobox[value]
+        for (index, _) in distanceRadiobox.enumerated() {
+            if index != value {
+                distanceRadiobox[index] = false
+            }
+        }
+        tableView.reloadData()
     }
     
     func dealCell(dealCell: DealCell, didChangeValue value: Bool) {

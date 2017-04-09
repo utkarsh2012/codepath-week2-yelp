@@ -21,7 +21,7 @@ class SortCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        sortRb.addTarget(self, action: #selector(sortRadioButtonSelected), for: UIControlEvents.allTouchEvents)
+        sortRb.addTarget(self, action: #selector(sortRadioButtonSelected), for: UIControlEvents.touchDown)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

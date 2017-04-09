@@ -21,7 +21,7 @@ class DistanceCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        distanceRb.addTarget(self, action: #selector(distanceRadioButtonSelected), for: UIControlEvents.allTouchEvents)
+        distanceRb.addTarget(self, action: #selector(distanceRadioButtonSelected), for: UIControlEvents.touchDown)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

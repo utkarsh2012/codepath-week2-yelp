@@ -21,6 +21,10 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:0.76, green:0.06, blue:0.07, alpha:1.00)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -97,7 +101,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         let isDeals = filters["deals"] as? Bool
         let sort = filters["sort"] as? Int
 
-        Business.searchWithTerm(term: "Restaurants", sort: YelpSortMode(rawValue: sort!), categories: categories, deals: isDeals) { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", sort: YelpSortMode(rawValue: sort!+1), categories: categories, deals: isDeals) { (businesses: [Business]?, error: Error?) -> Void in
             self.filteredBusinesses = businesses
             self.tableView.reloadData()
         }
